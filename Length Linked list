@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class node {
+    public:
+    int data;
+    node* next;
+};
+void push(node**head, int new_data)
+{
+    node* new_node = new node();
+    new_node->data = new_data;
+    new_node->next = (*head);
+    (*head) = new_node;
+}
+int count_iterative(node* head)
+{
+    if(head == NULL)
+    {
+        return 0;
+    }
+    else {
+        return 1 + count_iterative(head->next);
+    }
+}
+int main()
+{
+    node* head = NULL;
+    push(&head, 1);
+    push(&head, 3);
+    push(&head, 1);
+    push(&head, 1);
+    push(&head, 2);
+    cout<<"Length of list is: "<<count_iterative(head);
+}
